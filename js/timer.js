@@ -31,6 +31,19 @@ function reset(){
     show();
 }
 
+
+function fittext(){
+    var w = $(window).width();
+    var h = $(window).height();
+    var fs = Math.min(w/13.0, Math.max((h-60.0)/2.0,0));
+    $("#count").css("fontSize",fs+"px");
+    $("#total").css("fontSize",fs+"px");
+    $("#topmargin").css("margin-top","-"+(fs+$("#pg").height()+$("#raanounce").height()));    
+    //console.log(w+":"+h+", "+fs);
+}
+
+
+
 function kp(event){
    console.log(pressedChar(event));
    if(event.keyCode==13)reset();
@@ -54,6 +67,7 @@ function pause(){
     console.log("pause:"+p);
 }
 function count(){
+   fittext();
    if(p){
        ptime = Date.parse(new Date())
        return;
